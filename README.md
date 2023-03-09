@@ -7,7 +7,7 @@
 - *Testing, including tests of REST-API's*
 - *CI and CONTINUOUS DELIVERY*
 
-## CA2
+## CA1
 
 ### Preconditions
 *In order to use this code, you should have a local developer setup + a "matching" server on the internet, which you have admin access to.* 
