@@ -22,6 +22,7 @@ public class Person implements Serializable {
     private String password;
     @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private Address address;
+
     @ManyToMany(cascade = CascadeType.PERSIST, mappedBy = "person")
     @JoinTable(
             name = "personhobby",
@@ -29,6 +30,7 @@ public class Person implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "hobby_id")
     )
     private Set<Hobby> hobby = new LinkedHashSet<>();
+
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "person")
     private Set<Phone> phone = new LinkedHashSet<>();
 
