@@ -34,6 +34,7 @@ public class PersonDTO {
     public PersonDTO(Person person) {
     }
 
+
     public static List<PersonDTO> getDtos(List<Person> persons){
         List<PersonDTO> personDTOs = new ArrayList();
         persons.forEach(person -> personDTOs.add(new PersonDTO(person)));
