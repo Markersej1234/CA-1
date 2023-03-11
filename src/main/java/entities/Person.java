@@ -97,8 +97,8 @@ public class Person implements Serializable {
 
     public void setHobby(Set<Hobby> hobby){this.hobby = hobby;}
 
-//    public void addPhone(Phone phone){
-//        this.phone.add(phone);
-//        phone.setPerson(this);
-//    }
+    public void addPhone(Phone phone){
+        this.phone.add(phone);
+        phone.setPerson(this);
+    }
 }
