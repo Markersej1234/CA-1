@@ -18,6 +18,10 @@ public class Phone {
     @Column(name = "description", length = 30)
     private String description;
 
+    @ManyToOne
+    @JoinColumn(name="PERSON_ID", referencedColumnName = "id")
+    private Person person;
+
     // many to one person
     @ManyToOne
     @JoinColumn(name = "phone_id")
