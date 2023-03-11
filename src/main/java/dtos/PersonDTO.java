@@ -40,9 +40,6 @@ public class PersonDTO {
         return personDTOs;
     }
 
-    public PersonDTO() {
-    }
-
     public Long getId() {
         return id;
     }
