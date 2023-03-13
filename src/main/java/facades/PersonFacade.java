@@ -121,4 +121,11 @@ public class PersonFacade {
         }
         return personDTOs;
     }
+
+    public List<PersonDTO> getAllPersons() {
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Person> query = em.createQuery("SELECT p FROM Person p", Person.class);
+        List<Person> rms = query.getResultList();
+        return PersonDTO.getDtos(rms);
+    }
 }
