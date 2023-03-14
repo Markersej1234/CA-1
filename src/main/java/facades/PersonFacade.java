@@ -1,10 +1,7 @@
 package facades;
 
 import dtos.PersonDTO;
-import dtos.RenameMeDTO;
-import entities.Hobby;
 import entities.Person;
-import entities.RenameMe;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +10,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
 
 //import errorhandling.RenameMeNotFoundException;
-import utils.EMF_Creator;
+
 
 /**
  *
