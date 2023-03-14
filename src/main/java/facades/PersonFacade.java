@@ -46,11 +46,11 @@ public class PersonFacade {
     }
     
     public PersonDTO createPerson(PersonDTO personDTO){
-        Person person = new Person(personDTO.getFirstName(), personDTO.getLastName(), personDTO.getEmail());
-        EntityManager em = getEntityManager();
+        Person person = new Person(personDTO.getFirstName(), personDTO.getLastName(), personDTO.getEmail(),personDTO.getPassword());
+        EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
-            em.persist(personDTO);
+            em.persist(person);
             em.getTransaction().commit();
         } finally {
             em.close();

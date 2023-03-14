@@ -10,16 +10,9 @@ GET http://localhost:8080/harbour_war_exploded/api/info/admin
 X-Access-Token: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGVzIjoiYWRtaW4iLCJleHAiOjE2NjcyOTk5NzEsImlhdCI6MTY2NzI5ODE3MSwiaXNzdWVyIjoic2VtZXN0ZXJzdGFydGNvZGUtZGF0MyIsInVzZXJuYW1lIjoiYWRtaW4ifQ.TOIzMcm5xiGfORrc8Egv_v3--4a4jtdY355OQ6v2nfA
 
 
-### Create boat
-POST http://localhost:8080/harbour_war_exploded/api/boat/createboat
-Content-Type: application/json
-
-{
-  "brand": "ok",
-  "make": "ok",
-  "name": "Dorte",
-  "image": "ok"
-}
+### Get all projects
+GET http://localhost:8080/CA_1_war_exploded/api/person/all
+Accept: application/json
 
 
 

@@ -16,14 +16,15 @@ import java.util.List;
 public class PersonResource {
 
     private static final EntityManagerFactory EMF = EMF_Creator.createEntityManagerFactory();
-    private static final PersonFacade FACADE =  PersonFacade.getFacadeExample(EMF);
+
+    private static final PersonFacade FACADE = PersonFacade.getFacadeExample(EMF);
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
             
-    @GET
-    @Produces({MediaType.APPLICATION_JSON})
-    public String demo() {
-        return "{\"msg\":\"Hello World\"}";
-    }
+//    @GET
+//    @Produces({MediaType.APPLICATION_JSON})
+//    public String demo() {
+//        return "{\"msg\":\"Hello World\"}";
+//    }
 //    @Path("count")
 //    @GET
 //    @Produces({MediaType.APPLICATION_JSON})
@@ -36,15 +37,16 @@ public class PersonResource {
 
 
     @POST
-    //@Path("createperson")
+    @Path("createperson")
     @Produces({MediaType.APPLICATION_JSON})
     @Consumes({MediaType.APPLICATION_JSON})
     //@RolesAllowed("user")
-    public Response createProject(PersonDTO personDTO) {
+    public Response createPerson(PersonDTO personDTO) {
         personDTO = FACADE.createPerson(personDTO);
         return Response.ok().entity(GSON.toJson(personDTO)).build();
 
     }
+
 
     @GET
     @Path("all")
