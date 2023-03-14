@@ -126,6 +126,7 @@ public class PersonFacade {
         EntityManager em = emf.createEntityManager();
         TypedQuery<Person> query = em.createQuery("SELECT p FROM Person p", Person.class);
         List<Person> rms = query.getResultList();
+        System.out.println(rms);
         return PersonDTO.getDtos(rms);
     }
 }

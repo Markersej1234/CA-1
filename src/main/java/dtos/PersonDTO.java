@@ -31,13 +31,21 @@ public class PersonDTO {
         this.hobby_id = hobby_id;
     }
 
+    public PersonDTO(Long id, String email, String firstName, String lastName, String password) {
+        this.id = id;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+    }
+
     public PersonDTO(Person person) {
     }
 
 
     public static List<PersonDTO> getDtos(List<Person> persons){
         List<PersonDTO> personDTOs = new ArrayList();
-        persons.forEach(person -> personDTOs.add(new PersonDTO(person)));
+        persons.forEach(person -> personDTOs.add(new PersonDTO(person.getId(), person.getEmail(), person.getFirstName(), person.getLastName(), person.getPassword())));
         return personDTOs;
     }
 
@@ -119,5 +127,16 @@ public class PersonDTO {
 
     public void setHobby_id(Set<Long> hobby_id) {
         this.hobby_id = hobby_id;
+    }
+
+    @Override
+    public String toString() {
+        return "PersonDTO{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }
