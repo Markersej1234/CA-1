@@ -63,6 +63,10 @@ public class Hobby {
         this.id = id;
     }
 
+    public void setPerson(Set<Person> person){this.person = person;}
+
+    public void addPerson(Person person){this.person.add(person);}
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
