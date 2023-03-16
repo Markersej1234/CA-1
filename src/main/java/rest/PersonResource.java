@@ -9,6 +9,7 @@ import facades.PersonFacade;
 
 import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityNotFoundException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -42,7 +43,6 @@ public class PersonResource {
 
     }
 
-
     @GET
     @Path("all")
     @Produces({MediaType.APPLICATION_JSON})
@@ -50,6 +50,17 @@ public class PersonResource {
         List<PersonDTO> rns = FACADE.getAllPersons();
         System.out.println(rns);
         return Response.ok().entity(GSON.toJson(rns)).build();
+    }
+
+    @PUT
+    @Path("/{id}")
+    @Produces({MediaType.APPLICATION_JSON})
+    @Consumes({MediaType.APPLICATION_JSON})
+    public Response update(@PathParam("id") Long id, String content)throws EntityExistsException {
+        PersonDTO p = GSON.fromJson(content, PersonDTO.class);
+        p.setId(id);
+        PersonDTO updated = FACADE.update(p);
+        return Response.ok().entity(GSON.toJson(updated)).build();
     }
 
     @GET
