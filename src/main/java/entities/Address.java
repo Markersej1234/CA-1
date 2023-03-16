@@ -64,5 +64,10 @@ import java.util.Set;
     public void setAdditinalInfo(String additinalInfo) {
         this.additinalInfo = additinalInfo;
     }
+
+    public void addPerson(Person person){
+        this.persons.add(person);
+        person.setAddress(this);
+    }
 }
 

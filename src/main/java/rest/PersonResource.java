@@ -2,13 +2,17 @@ package rest;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import dtos.CityInfoDTO;
 import dtos.PersonDTO;
 import utils.EMF_Creator;
 import facades.PersonFacade;
+
+import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.ArrayList;
 import java.util.List;
 
 //Todo Remove or change relevant parts before ACTUAL use
@@ -48,5 +52,12 @@ public class PersonResource {
         return Response.ok().entity(GSON.toJson(rns)).build();
     }
 
+    @GET
+    @Path("/zips")
+    @Produces({MediaType.APPLICATION_JSON})
+    public Response getAllZips() throws EntityExistsException {
+        List<CityInfoDTO> c = new ArrayList<>(FACADE.getAllZips());
+        return  Response.ok().entity(GSON.toJson(c)).build();
+    }
 
 }

@@ -28,10 +28,13 @@ public class Hobby {
     public Hobby(){
     }
 
+    public Hobby(Long id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+    }
 
-
-
-//    public Set<Hobby> getHobbies() {
+    //    public Set<Hobby> getHobbies() {
 //        return hobbies;
 //    }
 //
@@ -62,6 +65,10 @@ public class Hobby {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public void setPerson(Set<Person> person){this.person = person;}
+
+    public void addPerson(Person person){this.person.add(person);}
 
     @Override
     public boolean equals(Object o) {
