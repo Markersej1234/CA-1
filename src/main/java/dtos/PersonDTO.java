@@ -1,6 +1,9 @@
 package dtos;
 
+import entities.Address;
+import entities.Hobby;
 import entities.Person;
+import entities.Phone;
 
 
 import java.util.*;
@@ -39,9 +42,36 @@ public class PersonDTO {
         this.password = password;
     }
 
-    public PersonDTO(Person person) {
+    public Person getEntity(){
+        Person person = new Person(this.getEmail(), this.getFirstName(), this.getLastName(), this.getPassword());
+        if(this.id != null && this.id != 0){
+            person.setId(this.id);
+        }
+        Set<Phone> phones = new LinkedHashSet<>();
+        for(PhoneDTO p : this.getPhone()){
+            Phone ph = new Phone(p.getNumber());
+            if(p.getId() != null) {
+                ph.setId(p.getId());
+            }
+            phones.add(ph);
+        }
+        person.setPhone(phones);
+        person.setAddress(new Address(this.address.getStreet(), this.address.getAdditionalInfo()));
+        Set<Hobby> hobbies = new LinkedHashSet<>();
+        for(HobbyDTO h : this.getHobbies()){
+            Hobby hd = new Hobby(h.getId(),h.getHobby_name(), h.getDescription());
+            if(h.getId() != null){
+                hd.setId(h.getId());
+            }
+            hobbies.add(hd);
+        }
+        person.setHobby(hobbies);
+
+        return person;
     }
 
+    public PersonDTO(Person person) {
+    }
 
     public static List<PersonDTO> getDtos(List<Person> persons){
         List<PersonDTO> personDTOs = new ArrayList();

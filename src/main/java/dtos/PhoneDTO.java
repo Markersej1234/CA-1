@@ -1,5 +1,8 @@
 package dtos;
 
+import entities.Person;
+import entities.Phone;
+
 public class PhoneDTO {
     private long id;
     private String number;
@@ -12,6 +15,14 @@ public class PhoneDTO {
         this.description = description;
     }
 
+    public PhoneDTO(Phone phone) {
+        if (phone.getId() != null){
+            this.id = phone.getId();
+        }
+        this.number = phone.getNumber();
+    }
+
+
     public PhoneDTO() {
     }
 
@@ -23,9 +34,7 @@ public class PhoneDTO {
         this.id = id;
     }
 
-    public String getNumber() {
-        return number;
-    }
+    public String getNumber() {return number;}
 
     public void setNumber(String number) {
         this.number = number;

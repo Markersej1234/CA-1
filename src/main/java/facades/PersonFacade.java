@@ -1,12 +1,10 @@
 package facades;
 
+import dtos.CityInfoDTO;
 import dtos.HobbyDTO;
 import dtos.PersonDTO;
 import dtos.PhoneDTO;
-import entities.Address;
-import entities.Hobby;
-import entities.Person;
-import entities.Phone;
+import entities.*;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -59,6 +57,17 @@ public class PersonFacade {
         em.close();
         return person;
     }
+
+    public Person assignCityInfo(long cityInfoId, long person_id){
+        EntityManager em = emf.createEntityManager();
+        CityInfo cityInfo = em.find(CityInfo.class, cityInfoId);
+        Person person = em.find(Person.class, person_id);
+        em.getTransaction().begin();
+        cityInfo.setAddress(person.getAddress());
+        em.getTransaction().commit();
+        em.close();
+        return person;
+    }
     
     public PersonDTO createPerson(PersonDTO personDTO){
         Set<Phone> phones = new LinkedHashSet<>();
@@ -87,20 +96,10 @@ public class PersonFacade {
         for(HobbyDTO h :personDTO.getHobbies()) {
             assignHobby(h.getId(), person.getId());
         }
-        //assignCityInfo
-
-
-
-//        Person person = new Person(personDTO.getFirstName(), personDTO.getLastName(), personDTO.getEmail(),personDTO.getPassword());
-//        EntityManager em = emf.createEntityManager();
-//        try {
-//            em.getTransaction().begin();
-//            em.persist(person);
-//            em.getTransaction().commit();
-//        } finally {
-//            em.close();
-//        }
-//        return new PersonDTO(person);
+        assignCityInfo(personDTO.getCityInfo_id(),person.getId());
+        PersonDTO output = new PersonDTO(person);
+        output.setHobbies(personDTO.getHobbies());
+        return output;
     }
 
     public PersonDTO update(PersonDTO personDTO){
@@ -115,6 +114,17 @@ public class PersonFacade {
             em.close();
         }
         return new PersonDTO(person);
+    }
+
+    public List<CityInfoDTO> getAllZips() {
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<CityInfo> query = em.createQuery("SELECT c FROM CityInfo c",CityInfo.class );
+        List<CityInfo> citys = query.getResultList();
+        List<CityInfoDTO> cityDTOS = new ArrayList<>();
+        for (CityInfo c : citys) {
+            cityDTOS.add(new CityInfoDTO(c));
+        }
+        return cityDTOS;
     }
 
 //

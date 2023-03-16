@@ -27,6 +27,9 @@ public class Phone {
     @JoinColumn(name = "phone_id")
     private Phone phone;
 
+    public Phone(String number) {
+    }
+
     public Phone getPhone() {
         return phone;
     }
