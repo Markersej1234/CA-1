@@ -28,10 +28,13 @@ public class Hobby {
     public Hobby(){
     }
 
+    public Hobby(Long id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+    }
 
-
-
-//    public Set<Hobby> getHobbies() {
+    //    public Set<Hobby> getHobbies() {
 //        return hobbies;
 //    }
 //

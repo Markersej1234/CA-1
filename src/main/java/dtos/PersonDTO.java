@@ -14,19 +14,17 @@ public class PersonDTO {
     private String email;
     private String firstName;
     private String lastName;
-    private String password;
     private Set<PhoneDTO> phone;
     private Set<HobbyDTO> hobbies;
     private AddressDTO address;
     private Long cityInfo_id;
     private Set<Long> hobby_id;
 
-    public PersonDTO(Long id, String email, String firstName, String lastName, String password, Set<PhoneDTO> phone, Set<HobbyDTO> hobbies, AddressDTO address, Long cityInfo_id, Set<Long> hobby_id) {
+    public PersonDTO(Long id, String email, String firstName, String lastName, Set<PhoneDTO> phone, Set<HobbyDTO> hobbies, AddressDTO address, Long cityInfo_id, Set<Long> hobby_id) {
         this.id = id;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.password = password;
         this.phone = phone;
         this.hobbies = hobbies;
         this.address = address;
@@ -34,22 +32,22 @@ public class PersonDTO {
         this.hobby_id = hobby_id;
     }
 
-    public PersonDTO(Long id, String email, String firstName, String lastName, String password) {
+    public PersonDTO(Long id, String email, String firstName, String lastName) {
         this.id = id;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.password = password;
     }
 
+
     public Person getEntity(){
-        Person person = new Person(this.getEmail(), this.getFirstName(), this.getLastName(), this.getPassword());
+        Person person = new Person(this.getEmail(), this.getFirstName(), this.getLastName());
         if(this.id != null && this.id != 0){
             person.setId(this.id);
         }
         Set<Phone> phones = new LinkedHashSet<>();
         for(PhoneDTO p : this.getPhone()){
-            Phone ph = new Phone(p.getNumber());
+            Phone ph = new Phone(p.getId(), p.getNumber(), p.getDescription());
             if(p.getId() != null) {
                 ph.setId(p.getId());
             }
@@ -59,7 +57,7 @@ public class PersonDTO {
         person.setAddress(new Address(this.address.getStreet(), this.address.getAdditionalInfo()));
         Set<Hobby> hobbies = new LinkedHashSet<>();
         for(HobbyDTO h : this.getHobbies()){
-            Hobby hd = new Hobby(h.getId(),h.getHobby_name(), h.getDescription());
+            Hobby hd = new Hobby(h.getId(), h.getHobby_name(), h.getDescription());
             if(h.getId() != null){
                 hd.setId(h.getId());
             }
@@ -75,7 +73,7 @@ public class PersonDTO {
 
     public static List<PersonDTO> getDtos(List<Person> persons){
         List<PersonDTO> personDTOs = new ArrayList();
-        persons.forEach(person -> personDTOs.add(new PersonDTO(person.getId(), person.getEmail(), person.getFirstName(), person.getLastName(), person.getPassword())));
+        persons.forEach(person -> personDTOs.add(new PersonDTO(person.getId(), person.getEmail(), person.getFirstName(), person.getLastName())));
         return personDTOs;
     }
 
@@ -109,14 +107,6 @@ public class PersonDTO {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public Set<PhoneDTO> getPhone() {
@@ -166,7 +156,6 @@ public class PersonDTO {
                 ", email='" + email + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", password='" + password + '\'' +
                 '}';
     }
 }

@@ -22,7 +22,6 @@ public class PhoneDTO {
         this.number = phone.getNumber();
     }
 
-
     public PhoneDTO() {
     }
 

@@ -27,7 +27,20 @@ public class Phone {
     @JoinColumn(name = "phone_id")
     private Phone phone;
 
+
     public Phone(String number) {
+        this.id = id;
+        this.number = number;
+        this.description = description;
+        this.person = person;
+        this.phone = phone;
+    }
+
+    public Phone(Long id, String number, String description) {
+    }
+
+    public Phone() {
+
     }
 
     public Phone getPhone() {
