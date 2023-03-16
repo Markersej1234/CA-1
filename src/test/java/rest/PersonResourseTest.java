@@ -105,7 +105,7 @@ public class PersonResourseTest {
     }
 
     @Test
-    void createProject() {
+    void createPerson() {
         //DTOen skal nok også ændres her
         given()
                 .contentType(ContentType.JSON)

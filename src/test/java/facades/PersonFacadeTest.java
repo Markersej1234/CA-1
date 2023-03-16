@@ -50,16 +50,16 @@ public class PersonFacadeTest {
     }
 
     @Test
-    void getAllProjects()  {
-        List<PersonDTO> boatDTOList = facade.getAllPersons();
+    void getAllPersons()  {
+        List<PersonDTO> personDTOList = facade.getAllPersons();
         int expected = 2;
-        int actual = boatDTOList.size();
+        int actual = personDTOList.size();
         assertEquals(expected, actual);
-        assertThat(boatDTOList, containsInAnyOrder(new PersonDTO(m1), new PersonDTO(m2)));
+        assertThat(personDTOList, containsInAnyOrder(new PersonDTO(m1), new PersonDTO(m2)));
     }
 
 //    @Test
-//    void createProject() {
+//    void createPerson() {
 //        //ændrer i PersonDTO mangler id hvad fuck er long, det burde bare være et tal
 //        facade.createPerson(new PersonDTO("Hans", "Hans", "Hans@Hans", "1234"));
 //        assertEquals(3, facade.getPersonCount());

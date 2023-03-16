@@ -109,15 +109,15 @@ public class Person implements Serializable {
     }
 
 
-//    @Override
-//    public String toString() {
-//        return "Person{" +
-//                "id=" + id +
-//                ", email='" + email + '\'' +
-//                ", firstName='" + firstName + '\'' +
-//                ", lastName='" + lastName + '\'' +
-//                ", password='" + password + '\'' +
-//                ", address=" + address +
-//                '}';
-//    }
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", password='" + password + '\'' +
+                ", address=" + address +
+                '}';
+    }
 }

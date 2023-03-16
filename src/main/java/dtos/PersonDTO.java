@@ -156,6 +156,11 @@ public class PersonDTO {
                 ", email='" + email + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", phone=" + phone +
+                ", hobbies=" + hobbies +
+                ", address=" + address +
+                ", cityInfo_id=" + cityInfo_id +
+                ", hobby_id=" + hobby_id +
                 '}';
     }
 }
