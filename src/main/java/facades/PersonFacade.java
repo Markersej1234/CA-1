@@ -105,7 +105,7 @@ public class PersonFacade {
     public PersonDTO update(PersonDTO person) {
         EntityManager em = getEntityManager();
         em.getTransaction().begin();
-        Person p = em.merge(person.getEntity()); //implement getEntity
+        Person p = em.merge(person.getEntity());
         em.getTransaction().commit();
         em.close();
         return new PersonDTO(p);
