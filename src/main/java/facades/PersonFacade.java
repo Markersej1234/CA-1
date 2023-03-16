@@ -187,4 +187,23 @@ public class PersonFacade {
         System.out.println(rms);
         return PersonDTO.getDtos(rms);
     }
+
+    //Til createPersonTest
+    public long getPersonCount() {
+        EntityManager em = emf.createEntityManager();
+        try {
+            long PersonCount = (long) em.createQuery("SELECT COUNT(p) FROM Person p").getSingleResult();
+            return PersonCount;
+        } finally {
+            em.close();
+        }
+    }
+
+    public static PersonFacade getInstance(EntityManagerFactory _emf) {
+        if (instance == null) {
+            emf = _emf;
+            instance = new PersonFacade();
+        }
+        return instance;
+    }
 }
