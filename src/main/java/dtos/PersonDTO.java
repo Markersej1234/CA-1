@@ -39,7 +39,6 @@ public class PersonDTO {
         this.lastName = lastName;
     }
 
-<<<<<<< HEAD
 
 //    public Person getEntity(){
 //        Person person = new Person(this.getEmail(), this.getFirstName(), this.getLastName());
@@ -68,35 +67,7 @@ public class PersonDTO {
 //
 //        return person;
 //    }
-=======
-    public Person getEntity(){
-        Person person = new Person(this.getEmail(), this.getFirstName(), this.getLastName());
-        if(this.id != null && this.id != 0){
-            person.setId(this.id);
-        }
-        Set<Phone> phones = new LinkedHashSet<>();
-        for(PhoneDTO p : this.getPhone()){
-            Phone ph = new Phone(p.getId(), p.getNumber(), p.getDescription());
-            if(p.getId() != null) {
-                ph.setId(p.getId());
-            }
-            phones.add(ph);
-        }
-        person.setPhone(phones);
-        person.setAddress(new Address(this.address.getStreet(), this.address.getAdditionalInfo()));
-        Set<Hobby> hobbies = new LinkedHashSet<>();
-        for(HobbyDTO h : this.getHobbies()){
-            Hobby hd = new Hobby(h.getId(), h.getHobby_name(), h.getDescription());
-            if(h.getId() != null){
-                hd.setId(h.getId());
-            }
-            hobbies.add(hd);
-        }
-        person.setHobby(hobbies);
 
-        return person;
-    }
->>>>>>> ce21037a008e7b67fbab95c1fdd2ad6ee32998df
 
 
     public PersonDTO(Person person) {

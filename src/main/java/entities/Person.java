@@ -20,7 +20,7 @@ public class Person implements Serializable {
     private String firstName;
 
     private String lastName;
-    private String password;
+
     @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private Address address;
 
@@ -37,15 +37,12 @@ public class Person implements Serializable {
 
     public Person(){}
 
-    public Person(String email, String firstName, String lastName, String password) {
+    public Person(String email, String firstName, String lastName) {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.password = password;
     }
 
-    public Person(String firstName, String lastName, String email) {
-    }
 
     public Long getId() {
         return id;
@@ -79,14 +76,6 @@ public class Person implements Serializable {
         this.lastName = lastName;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public Address getAddress() {
         return address;
     }
@@ -116,7 +105,6 @@ public class Person implements Serializable {
                 ", email='" + email + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", password='" + password + '\'' +
                 ", address=" + address +
                 '}';
     }
