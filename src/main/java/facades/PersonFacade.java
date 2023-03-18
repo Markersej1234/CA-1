@@ -198,6 +198,18 @@ public class PersonFacade {
             em.close();
         }
     }
+    public CityInfoDTO insertCityInfo(CityInfoDTO cityInfoDTO){
+        CityInfo cityInfo = new CityInfo(cityInfoDTO.getZipCode(), cityInfoDTO.getCity());
+        EntityManager em = getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(cityInfo);
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+        return new CityInfoDTO(cityInfo);
+    }
 
     public static PersonFacade getInstance(EntityManagerFactory _emf) {
         if (instance == null) {

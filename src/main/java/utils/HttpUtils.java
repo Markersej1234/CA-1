@@ -9,20 +9,35 @@ import java.util.Scanner;
 
 public class HttpUtils {
 
-    public static String fetchData(String _url) throws MalformedURLException, IOException, FileNotFoundException {
-        URL url = new URL(_url);
-        HttpURLConnection con = (HttpURLConnection) url.openConnection();
-        con.setRequestMethod("GET");
-        //con.setRequestProperty("Accept", "application/json;charset=UTF-8");
-        con.setRequestProperty("Accept", "application/json");
-        con.setRequestProperty("User-Agent", "server");
+    public static String fetchAPIData(String _url)
+    {
+        String inline = "";
+        try {
+            URL url = new URL(_url);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.connect();
 
-        Scanner scan = new Scanner(con.getInputStream());
-        StringBuilder jsonStr = new StringBuilder();
-        while (scan.hasNext()) {
-            jsonStr.append(scan.nextLine());
+            int responsecode = conn.getResponseCode();
+
+            if (responsecode != 200) {
+                throw new RuntimeException("HttpResponseCode: " + responsecode);
+            } else {
+
+//                String inline = "";
+                Scanner scanner = new Scanner(url.openStream());
+
+                //Write all the JSON data into a string using a scanner
+                while (scanner.hasNext()) {
+                    inline += scanner.nextLine();
+                }
+
+                scanner.close();
+
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        scan.close();
-        return jsonStr.toString();
+        return inline;
     }
 }
