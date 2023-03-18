@@ -52,16 +52,16 @@ public class PersonResource {
         return Response.ok().entity(GSON.toJson(rns)).build();
     }
 
-    @PUT
-    @Path("/{id}")
-    @Produces({MediaType.APPLICATION_JSON})
-    @Consumes({MediaType.APPLICATION_JSON})
-    public Response update(@PathParam("id") Long id, String content)throws EntityExistsException {
-        PersonDTO p = GSON.fromJson(content, PersonDTO.class);
-        p.setId(id);
-        PersonDTO updated = FACADE.update(p);
-        return Response.ok().entity(GSON.toJson(updated)).build();
-    }
+//    @PUT
+//    @Path("/{id}")
+//    @Produces({MediaType.APPLICATION_JSON})
+//    @Consumes({MediaType.APPLICATION_JSON})
+//    public Response update(@PathParam("id") Long id, String content)throws EntityExistsException {
+//        PersonDTO p = GSON.fromJson(content, PersonDTO.class);
+//        p.setId(id);
+//        PersonDTO updated = FACADE.update(p);
+//        return Response.ok().entity(GSON.toJson(updated)).build();
+//    }
 
     @GET
     @Path("/zips")

@@ -102,14 +102,14 @@ public class PersonFacade {
         return output;
     }
 
-    public PersonDTO update(PersonDTO person) {
-        EntityManager em = getEntityManager();
-        em.getTransaction().begin();
-        Person p = em.merge(person.getEntity());
-        em.getTransaction().commit();
-        em.close();
-        return new PersonDTO(p);
-    }
+//    public PersonDTO update(PersonDTO person) {
+//        EntityManager em = getEntityManager();
+//        em.getTransaction().begin();
+//        Person p = em.merge(person.getEntity());
+//        em.getTransaction().commit();
+//        em.close();
+//        return new PersonDTO(p);
+//    }
 
     public List<CityInfoDTO> getAllZips() {
         EntityManager em = emf.createEntityManager();
