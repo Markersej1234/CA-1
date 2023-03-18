@@ -21,6 +21,8 @@ public class Person implements Serializable {
 
     private String lastName;
 
+
+
     @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private Address address;
 
